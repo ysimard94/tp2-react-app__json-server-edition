@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Products from './components/Products'
 import Form from './components/Form';
 import List from './components/List';
+import Edit from './components/Edit';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -30,15 +31,21 @@ function App() {
     setProducts(products.filter((product) => product.id !== id))
   };
 
+  const editProduct = (editedProduct) => {
+    const updatedProducts = products.map((product) =>
+      product.id === editedProduct.id ? editedProduct : product
+    );
+    setProducts(updatedProducts);
+  };
+
   return (
     <BrowserRouter>
       <div className="container">
         <Header />
         <Routes>
           <Route path="/" element={<><Home /><Form addProduct={addProduct} /></>} />
-        </Routes>
-        <Routes>
           <Route path="/products" element={<><Products /><List products={products} onDelete={deleteProduct}/></>} />
+          <Route path="/edit/:id" element={<Edit products={products}/>} />
         </Routes>
       </div>
     </BrowserRouter>

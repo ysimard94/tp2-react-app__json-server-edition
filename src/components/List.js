@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const List = ({ products, onDelete }) => {
     if (products.length === 0) {
@@ -24,6 +25,7 @@ const List = ({ products, onDelete }) => {
                         <td>{product.description}</td>
                         <td>{product.price}</td>
                         <td>{product.category}</td>
+                        <td><Link to={`/edit/${product.id}`}>Edit</Link></td>
                         <td><button className='btn-delete' onClick={() => handleDelete(product.id)}>Delete</button></td>
                     </tr>
                 ))}
