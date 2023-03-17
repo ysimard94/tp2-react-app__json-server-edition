@@ -47,6 +47,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <h1 className='title'>Product Manager</h1>
       <div className="container">
         <Header />
         <Routes>

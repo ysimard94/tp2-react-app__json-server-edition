@@ -46,7 +46,7 @@ const Edit = ({ products, editProduct }) => {
             <h1>Edit product</h1>
             <form className='product-form' onSubmit={handleSubmit}>
                 {error === 'true' && <p className='error fade-out'>Please fill in all the fields</p>}
-                {success === 'true' && <p className='success'>The product was added successfully</p>}
+                {success === 'true' && <p className='success'>The product was modified successfully</p>}
                 <label>Product name</label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
                 <label>Description</label>

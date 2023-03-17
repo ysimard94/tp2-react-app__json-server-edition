@@ -39,31 +39,14 @@ const Form = ({ addProduct }) => {
         <form onSubmit={handleSubmit} className='product-form'>
             {error === 'true' && <p className='error fade-out'>Please fill in all the fields</p>}
             {success === 'true' && <p className='success'>The product was added successfully</p>}
-            <input
-                type="text"
-                placeholder="Enter product name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Enter product description"
-                className='description'
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Enter product name"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="Enter product name"
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-            />
+            <label>Product name</label>
+            <input type="text" value={name} placeholder="Enter product name" onChange={(e) => setName(e.target.value)} />
+            <label>Description</label>
+            <input type="text" value={description} placeholder="Enter the product description"  onChange={(e) => setDescription(e.target.value)} />
+            <label>Price</label>
+            <input type="text" value={price} placeholder="Enter product price"  onChange={(e) => setPrice(e.target.value)} />
+            <label>Category</label>
+            <input type="text" value={category} placeholder="Enter product category"  onChange={(e) => setCategory(e.target.value)} />
             <button type="submit">Add Product</button>
         </form>
     );

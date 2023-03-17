@@ -1,3 +1,11 @@
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #F7F3F1;
+  margin: 0;
+  margin-block: 1rem;
+}
+
 body {
   background-color: #313034;
   margin: 0;
