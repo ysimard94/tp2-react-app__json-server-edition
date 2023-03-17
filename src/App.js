@@ -17,25 +17,32 @@ function App() {
       description,
       price,
       category
-    };
+    }
 
     console.log(newProduct)
     const id = Math.floor(Math.random() * 1000)
     newProduct.id = id;
     console.log(newProduct)
 
-    setProducts([...products, newProduct]);
+    setProducts([...products, newProduct])
+  };
+
+  const editProduct = (id, name, description, price, category) => {
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+    console.log(products)
+    products.map((product)=>{
+      if (product.id === id) {
+        product.name = name;
+        product.description = description;
+        product.price = price;
+        product.category = category;
+      }
+    })
+
   };
 
   const deleteProduct = (id) => {
     setProducts(products.filter((product) => product.id !== id))
-  };
-
-  const editProduct = (editedProduct) => {
-    const updatedProducts = products.map((product) =>
-      product.id === editedProduct.id ? editedProduct : product
-    );
-    setProducts(updatedProducts);
   };
 
   return (
@@ -44,8 +51,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<><Home /><Form addProduct={addProduct} /></>} />
-          <Route path="/products" element={<><Products /><List products={products} onDelete={deleteProduct}/></>} />
-          <Route path="/edit/:id" element={<Edit products={products}/>} />
+          <Route path="/products" element={<><Products /><List products={products} onDelete={deleteProduct} /></>} />
+          <Route path="/edit/:id" element={<><Edit products={products} editProduct={editProduct} /></>} />
         </Routes>
       </div>
     </BrowserRouter>

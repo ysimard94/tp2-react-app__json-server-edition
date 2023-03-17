@@ -29,7 +29,6 @@ const List = ({ products, onDelete }) => {
                         <td><button className='btn-delete' onClick={() => handleDelete(product.id)}>Delete</button></td>
                     </tr>
                 ))}
-
             </table>
         );
     }
