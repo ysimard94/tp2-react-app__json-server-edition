@@ -3,8 +3,6 @@ import { useState } from 'react'
 const Edit = ({ products, editProduct }) => {
     let id = parseFloat(useParams().id)
     const product = products.find(product => product.id === id);
-    console.log(product)
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
 
     const [name, setName] = useState(product.name);
     const [description, setDescription] = useState(product.description);
@@ -14,28 +12,28 @@ const Edit = ({ products, editProduct }) => {
     const [error, setError] = useState('false');
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
+        // Si un seul des champs est vide, afficher un message d'erreur qui disparaitra après 5 secondes
         if (!name || !description || !price || !category) {
             setError('true');
 
             setTimeout(() => {
-                setError('false');
-            }, 5000);
+                setError('false')
+            }, 5000)
         } else {
             // Pour que le message d'erreur disparaisse si la personne a rempli tous les champs rapidement après son affichage
             setError('false');
 
+            // Modifier le produit et afficher un message de succès qui va disparaitre après 5 secondes
             editProduct(id, name, description, price, category);
             setSuccess('true');
 
             setTimeout(() => {
                 setSuccess('false');
             }, 5000);
-
         }
-
-    };
+    }
 
     if (!product) {
         return <p>There are no product corresponding.</p>

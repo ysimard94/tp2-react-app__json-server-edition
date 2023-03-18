@@ -11,6 +11,7 @@ const Form = ({ addProduct }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Si un seul des champs est vide, afficher un message d'erreur qui disparaitra après 5 secondes
         if (!name || !description || !price || !category) {
             setError('true');
 
@@ -22,12 +23,15 @@ const Form = ({ addProduct }) => {
             // Pour que le message d'erreur disparaisse si la personne a rempli tous les champs rapidement après son affichage
             setError('false');
 
-            addProduct({name, description, price, category});
+            // Ajouter le produit et afficher un message de succès qui va disparaitre après 5 secondes
+            addProduct({ name, description, price, category });
             setSuccess('true');
 
             setTimeout(() => {
                 setSuccess('false');
             }, 5000);
+
+            // Vider les champs après l'ajout du produit
             setName('');
             setDescription('');
             setPrice('');
@@ -42,11 +46,11 @@ const Form = ({ addProduct }) => {
             <label>Product name</label>
             <input type="text" value={name} placeholder="Enter product name" onChange={(e) => setName(e.target.value)} />
             <label>Description</label>
-            <input type="text" value={description} placeholder="Enter the product description"  onChange={(e) => setDescription(e.target.value)} />
+            <input type="text" value={description} placeholder="Enter the product description" onChange={(e) => setDescription(e.target.value)} />
             <label>Price</label>
-            <input type="text" value={price} placeholder="Enter product price"  onChange={(e) => setPrice(e.target.value)} />
+            <input type="text" value={price} placeholder="Enter product price" onChange={(e) => setPrice(e.target.value)} />
             <label>Category</label>
-            <input type="text" value={category} placeholder="Enter product category"  onChange={(e) => setCategory(e.target.value)} />
+            <input type="text" value={category} placeholder="Enter product category" onChange={(e) => setCategory(e.target.value)} />
             <button type="submit">Add Product</button>
         </form>
     );

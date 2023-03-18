@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const List = ({ products, onDelete }) => {
+    // Si le tableau est vide, retourner un message, sinon retourner la liste des produits
     if (products.length === 0) {
         return <p>There are no products added yet.</p>
     }
@@ -19,6 +20,7 @@ const List = ({ products, onDelete }) => {
                     <th>Price</th>
                     <th>Category</th>
                 </tr>
+                {/* Va boucler à traver le tableau de produits pour afficher une liste de tous les produits */}
                 {products.map((product) => (
                     <tr key={product.id}>
                         <td >{product.name}</td>
