@@ -1,6 +1,6 @@
 # Projet pour gérer une liste de produit
 
-Ce projet est une application application à page unique, et a été programmé avec React. L'utilisateur peut ajouter des nouveaux produits, les modifier ainsi que les supprimer. Cette version utilise des fetch API et JSON server pour gérer les données.
+Ce projet est une application à page unique, et a été programmé avec React. L'utilisateur peut ajouter des nouveaux produits, les modifier ainsi que les supprimer. Cette version utilise des fetch API et JSON server pour gérer les données.
 
 ## Installation
 
