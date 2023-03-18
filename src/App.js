@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import Header from './components/Header'
@@ -11,6 +11,31 @@ import Edit from './components/Edit';
 function App() {
   const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const getProducts = async () => {
+      const productsFromServer = await fetchProducts()
+      console.log(productsFromServer)
+      setProducts(productsFromServer)
+    }
+    getProducts()
+  }, [])
+
+  const fetchProducts = async () => {
+    const res = await fetch('http://localhost:5000/products')
+    const data = await res.json()
+
+    return data
+  }
+
+  const fetchProduct = async (id) => {
+    const res = await fetch(`http://localhost:5000/products/${id}`)
+    const data = await res.json()
+
+    return data
+  }
+
+
+
   const addProduct = (name, description, price, category) => {
     const newProduct = {
       name,
@@ -19,9 +44,6 @@ function App() {
       category
     }
 
-    console.log(newProduct)
-    const id = Math.floor(Math.random() * 1000)
-    newProduct.id = id;
     console.log(newProduct)
 
     setProducts([...products, newProduct])
