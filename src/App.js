@@ -36,15 +36,16 @@ function App() {
 
 
 
-  const addProduct = (name, description, price, category) => {
-    const newProduct = {
-      name,
-      description,
-      price,
-      category
-    }
-
-    console.log(newProduct)
+  const addProduct = async (product) => {
+    const res = await fetch('http://localhost:5000/products', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+    console.log(res)
+    const newProduct = await res.json()
 
     setProducts([...products, newProduct])
   };

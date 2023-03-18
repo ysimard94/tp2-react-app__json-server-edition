@@ -22,7 +22,7 @@ const Form = ({ addProduct }) => {
             // Pour que le message d'erreur disparaisse si la personne a rempli tous les champs rapidement après son affichage
             setError('false');
 
-            addProduct(name, description, price, category);
+            addProduct({name, description, price, category});
             setSuccess('true');
 
             setTimeout(() => {
