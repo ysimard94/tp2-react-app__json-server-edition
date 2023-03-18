@@ -44,24 +44,27 @@ function App() {
       },
       body: JSON.stringify(product)
     })
-    console.log(res)
     const newProduct = await res.json()
 
     setProducts([...products, newProduct])
   };
 
-  const editProduct = (id, name, description, price, category) => {
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
-    console.log(products)
-    products.map((product)=>{
-      if (product.id === id) {
-        product.name = name;
-        product.description = description;
-        product.price = price;
-        product.category = category;
-      }
-    })
+  const editProduct = async (id, name, description, price, category) => {
+    {
+      const product = { id, name, description, price, category };
+      const res = await fetch(`http://localhost:5000/products/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(product)
+      });
 
+      const updatedProduct = await res.json();
+
+      const updatedProducts = products.map((product) => (product.id === id ? updatedProduct : product));
+      setProducts(updatedProducts);
+    }
   };
 
   const deleteProduct = (id) => {
