@@ -67,7 +67,11 @@ function App() {
     }
   };
 
-  const deleteProduct = (id) => {
+  const deleteProduct = async (id) => {
+    await fetch(`http://localhost:5000/products/${id}`, {
+      method: 'DELETE',
+    })
+    
     setProducts(products.filter((product) => product.id !== id))
   };
 
